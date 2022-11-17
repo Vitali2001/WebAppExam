@@ -1,0 +1,47 @@
+<div class="list row">
+    <div class="col-md-8">
+    
+    </div>
+    <div class="col-md-6">
+    <h4>Students List</h4>
+    <ul class="list-group">
+    <li
+    class="list-group-item"
+    *ngFor="let student of students; let i = index"
+    [class.active]="i == currentIndex"
+    (click)="setActiveStudent(student, i)"
+    >
+    {{ student.lName }}
+    </li>
+    </ul>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllStudents()">
+    Remove All
+    </button>
+    </div>
+    <div class="col-md-6">
+    <div *ngIf="currentStudent">
+    <h4>Student</h4>
+    <div>
+    <label><strong>Last Name:</strong></label> {{ currentStudent.lName }}
+    </div>
+    <div>
+        <label><strong>First Name:</strong></label> {{ currentStudent.fName }}
+    </div>
+    <div>
+        <label><strong>Midle Name:</strong></label> {{ currentStudent.mName }}
+    </div>
+    <div>
+        <label><strong>Subject:</strong></label> {{ currentStudent.subject }}
+    </div>
+    <div>
+    <a class="badge badge-warning" routerLink="/students/{{ currentStudent.id }}">
+    Edit
+    </a>
+    </div>
+    <div *ngIf="!currentStudent">
+    <br />
+    <p>Please click on a Student...</p>
+    </div>
+    </div>
+   </div>
+   
